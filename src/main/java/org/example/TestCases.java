@@ -31,4 +31,22 @@ public class TestCases {
         inputRegion.click();
         submitRegion.click();
     }
+
+    public void addAddress() {
+        changeAddress();
+        WebElement buttonRegion = driver.findElement(By.xpath("//*[@id=\"page-header\"]/div[1]/div[2]/div/div/div/div[1]"));
+        buttonRegion.click();
+        WebElement buttonAddress = driver.findElement(By.xpath("//button[@class='header-region-selector-view__address-block-button btn-bordered btn-block']"));
+        buttonAddress.click();
+        WebElement addressInput = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div/div[2]/div[1]/div/div/form/div/input"));
+        addressInput.sendKeys("Санкт-Петербург, Кронверкский проспект, 49");
+        WebElement chooseAddress = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div/div[2]/div[1]/div/div/form/div[2]/ul/li/a"));
+        chooseAddress.click();
+        WebElement buttonSubmitAddress = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div/div[2]/div[3]/button"));
+        buttonSubmitAddress.click();
+
+        WebElement buttonClose = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div/button"));
+        buttonClose.click();
+
+    }
 }

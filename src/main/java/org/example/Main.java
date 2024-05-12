@@ -23,6 +23,7 @@ public class Main {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         TestCases testCases = new TestCases(driver);
 //        testCases.searchProduct();
-        testCases.changeAddress();
+//        testCases.changeAddress();
+        testCases.addAddress();
     }
 }

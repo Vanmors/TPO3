@@ -3,24 +3,19 @@ package org.example;
 import org.openqa.selenium.*;
 
 public class TestCases {
-    protected WebDriver driver;
 
-    public TestCases(WebDriver webDriver) {
-        this.driver = webDriver;
-    }
-
-    public void searchProduct() {
+    public void searchProduct(WebDriver driver) {
         WebElement input = driver.findElement(By.xpath("//input[@placeholder='Искать товары']"));
         input.sendKeys("утюг");
         input.sendKeys(Keys.ENTER);
     }
 
-    public void changeAddress() {
+    public void changeAddress(WebDriver driver) {
         WebElement buttonCookie = driver.findElement(By.xpath("//button[@class='cookie__button c-button c-button_theme_primary c-button_size_small']"));
         buttonCookie.click();
         //todo button - не нужен для firefox
-        WebElement button = driver.findElement(By.xpath("//button[@class='btn-bordered header-region-selector-view__footer-cancel xs']"));
-        button.click();
+        //WebElement button = driver.findElement(By.xpath("//button[@class='btn-bordered header-region-selector-view__footer-cancel xs']"));
+        //button.click();
         WebElement input = driver.findElement(By.xpath("//input[@placeholder='Регион или город']"));
         input.sendKeys(" Санкт-Петербург");
         input.click();
@@ -30,8 +25,8 @@ public class TestCases {
         submitRegion.click();
     }
 
-    public void addAddress() {
-        changeAddress();
+    public void addAddress(WebDriver driver) {
+        changeAddress(driver);
         WebElement buttonRegion = driver.findElement(By.xpath("//*[@id=\"page-header\"]/div[1]/div[2]/div/div/div/div[1]"));
         buttonRegion.click();
         WebElement buttonAddress = driver.findElement(By.xpath("//button[@class='header-region-selector-view__address-block-button btn-bordered btn-block']"));
@@ -47,7 +42,7 @@ public class TestCases {
         buttonClose.click();
     }
 
-    public void addItemInCert() {
+    public void addItemInCert(WebDriver driver) {
         WebElement buttonCookie = driver.findElement(By.xpath("//button[@class='cookie__button c-button c-button_theme_primary c-button_size_small']"));
         buttonCookie.click();
         WebElement input = driver.findElement(By.xpath("//input[@placeholder='Искать товары']"));
@@ -78,13 +73,13 @@ public class TestCases {
         }
     }
 
-    public void deleteItemFromCert() {
-        addItemInCert();
+    public void deleteItemFromCert(WebDriver driver) {
+        addItemInCert(driver);
         WebElement deleteItemButton = driver.findElement(By.xpath("//*[@id=\"app\"]/main/div/div/div/div/div/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[2]/button"));
         deleteItemButton.click();
     }
 
-    public void favourites() {
+    public void favourites(WebDriver driver) {
         WebElement buttonCookie = driver.findElement(By.xpath("//button[@class='cookie__button c-button c-button_theme_primary c-button_size_small']"));
         buttonCookie.click();
         WebElement input = driver.findElement(By.xpath("//input[@placeholder='Искать товары']"));

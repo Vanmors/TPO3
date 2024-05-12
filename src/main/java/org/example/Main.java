@@ -19,10 +19,10 @@ public class Main {
         driver.get("https://megamarket.ru");
 //        driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
-        driver.manage().timeouts().pageLoadTimeout(01, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         TestCases testCases = new TestCases(driver);
 //        testCases.searchProduct();
-        testCases.changeAdress();
+        testCases.changeAddress();
     }
 }

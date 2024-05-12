@@ -18,17 +18,16 @@ public class TestCases {
         input.sendKeys(Keys.ENTER);
     }
 
-    public void changeAdress() {
-//        WebElement input = driver.findElement(By.xpath("//input[@class='svg-icon mobile-header-delivery-address__icon']"));
-
+    public void changeAddress() {
         WebElement buttonCookie = driver.findElement(By.xpath("//button[@class='cookie__button c-button c-button_theme_primary c-button_size_small']"));
         buttonCookie.click();
         WebElement button = driver.findElement(By.xpath("//button[@class='btn-bordered header-region-selector-view__footer-cancel xs']"));
         button.click();
         WebElement input = driver.findElement(By.xpath("//input[@placeholder='Регион или город']"));
         input.sendKeys(" Санкт-Петербург");
+        input.click();
         WebElement submitRegion = driver.findElement(By.xpath("//button[@class='header-region-selector-change__form-submit btn']"));
-        WebElement inputRegion = driver.findElement(By.xpath("//div[@class='select field opened filterable lg']/div[2]/ul/li[1]"));
+        WebElement inputRegion = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div/div/div/div/div/div/div/form/div/div/div[2]/ul/li"));
         inputRegion.click();
         submitRegion.click();
     }

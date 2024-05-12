@@ -1,9 +1,10 @@
 package org.example;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class TestCases {
     protected WebDriver driver;
@@ -47,6 +48,45 @@ public class TestCases {
 
         WebElement buttonClose = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div/button"));
         buttonClose.click();
+    }
 
+    public void addItemInCert(){
+        WebElement input = driver.findElement(By.xpath("//input[@placeholder='Искать товары']"));
+        input.sendKeys("Apple Macbook Air");
+        input.sendKeys(Keys.ENTER);
+        WebElement firstMacBook = driver.findElement(By.xpath("/html/body/div[1]/div[1]/main/div/div[1]/div[2]/div/div[2]/div[2]/div[2]/div[3]/div/div[1]/div[1]/a/div/img"));
+        firstMacBook.click();
+        WebElement buyButton = driver.findElement(By.xpath("/html/body/div[1]/div[1]/main/div/div[1]/div[10]/div[2]/button"));
+        buyButton.click();
+
+        WebElement continueBuyHref = driver.findElement(By.xpath("//a[@class='btn-bordered cart-adding-finish-main-item__continue-btn']"));
+        continueBuyHref.click();
+        waitForAlert(driver);
+    }
+
+    public void waitForAlert(WebDriver driver) {
+        int i=0;
+        while(i++<5)
+        {
+            try
+            {
+                Alert alert = driver.switchTo().alert();
+                break;
+            }
+            catch(NoAlertPresentException e)
+            {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                    throw new RuntimeException(ex);
+                }
+                continue;
+            }
+        }
+    }
+
+    public void deleteItemFromCert() {
+        addItemInCert();
+        //...
     }
 }

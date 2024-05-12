@@ -22,6 +22,7 @@ public class TestCases {
     public void changeAddress() {
         WebElement buttonCookie = driver.findElement(By.xpath("//button[@class='cookie__button c-button c-button_theme_primary c-button_size_small']"));
         buttonCookie.click();
+        //todo button - не нужен для firefox
         WebElement button = driver.findElement(By.xpath("//button[@class='btn-bordered header-region-selector-view__footer-cancel xs']"));
         button.click();
         WebElement input = driver.findElement(By.xpath("//input[@placeholder='Регион или город']"));
@@ -51,23 +52,25 @@ public class TestCases {
     }
 
     public void addItemInCert() {
+        WebElement buttonCookie = driver.findElement(By.xpath("//button[@class='cookie__button c-button c-button_theme_primary c-button_size_small']"));
+        buttonCookie.click();
         WebElement input = driver.findElement(By.xpath("//input[@placeholder='Искать товары']"));
         input.sendKeys("Apple Macbook Air");
         input.sendKeys(Keys.ENTER);
         WebElement firstMacBook = driver.findElement(By.xpath("/html/body/div[1]/div[1]/main/div/div[1]/div[2]/div/div[2]/div[2]/div[2]/div[3]/div/div[1]/div[1]/a/div/img"));
         firstMacBook.click();
+
         WebElement buyButton = driver.findElement(By.xpath("/html/body/div[1]/div[1]/main/div/div[1]/div[10]/div[2]/button"));
         buyButton.click();
         WebElement continueBuyHref = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div/div/div/div[1]/div/div/div[2]/a[1]/span"));
         continueBuyHref.click();
-        waitForAlert(driver);
     }
 
     public void waitForAlert(WebDriver driver) {
         int i = 0;
         while (i++ < 5) {
             try {
-                Alert alert = driver.switchTo().alert();
+                driver.switchTo().alert();
                 break;
             } catch (NoAlertPresentException e) {
                 try {
@@ -75,7 +78,6 @@ public class TestCases {
                 } catch (InterruptedException ex) {
                     throw new RuntimeException(ex);
                 }
-                continue;
             }
         }
     }

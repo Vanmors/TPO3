@@ -50,7 +50,7 @@ public class TestCases {
         buttonClose.click();
     }
 
-    public void addItemInCert(){
+    public void addItemInCert() {
         WebElement input = driver.findElement(By.xpath("//input[@placeholder='Искать товары']"));
         input.sendKeys("Apple Macbook Air");
         input.sendKeys(Keys.ENTER);
@@ -58,23 +58,18 @@ public class TestCases {
         firstMacBook.click();
         WebElement buyButton = driver.findElement(By.xpath("/html/body/div[1]/div[1]/main/div/div[1]/div[10]/div[2]/button"));
         buyButton.click();
-
-        WebElement continueBuyHref = driver.findElement(By.xpath("//a[@class='btn-bordered cart-adding-finish-main-item__continue-btn']"));
+        WebElement continueBuyHref = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div/div/div/div[1]/div/div/div[2]/a[1]/span"));
         continueBuyHref.click();
         waitForAlert(driver);
     }
 
     public void waitForAlert(WebDriver driver) {
-        int i=0;
-        while(i++<5)
-        {
-            try
-            {
+        int i = 0;
+        while (i++ < 5) {
+            try {
                 Alert alert = driver.switchTo().alert();
                 break;
-            }
-            catch(NoAlertPresentException e)
-            {
+            } catch (NoAlertPresentException e) {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {
@@ -87,6 +82,7 @@ public class TestCases {
 
     public void deleteItemFromCert() {
         addItemInCert();
-        //...
+        WebElement deleteItemButton = driver.findElement(By.xpath("//*[@id=\"app\"]/main/div/div/div/div/div/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[2]/button"));
+        deleteItemButton.click();
     }
 }

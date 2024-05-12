@@ -20,8 +20,6 @@ public class TestCases {
         WebElement buttonCookie = driver.findElement(By.xpath("//button[@class='cookie__button c-button c-button_theme_primary c-button_size_small']"));
         buttonCookie.click();
 
-        //WebElement button = driver.findElement(By.xpath("//button[@class='btn-bordered header-region-selector-view__footer-cancel xs']"));
-        //button.click();
         if (driver instanceof ChromeDriver) {
             WebElement button = (new WebDriverWait(driver, Duration.ofSeconds(10)).
                     until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@class='btn-bordered header-region-selector-view__footer-cancel xs']"))));
@@ -57,8 +55,9 @@ public class TestCases {
             chooseAddress.click();
             WebElement buttonSubmitAddress = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div/div[2]/div[3]/button"));
             buttonSubmitAddress.click();
-            WebElement buttonClose = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div/button"));
-            buttonClose.click();
+            //WebElement buttonClose = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div/button"));
+            //WebElement buttonClose = driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[1]/div/div/button"));
+            //buttonClose.click();
         } else {
             WebElement button = driver.findElement(By.xpath("/html/body/div[1]/div[1]/header/div[1]/div[2]/div/div/div/div[1]"));
             button.click();

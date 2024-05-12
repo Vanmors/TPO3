@@ -31,20 +31,16 @@ public class MyTest {
 
     @Test
     void changeAddressTest() {
-        List<WebDriver> drivers = Main.getDrivers("firefox");
+        List<WebDriver> drivers = Main.getDrivers("both");
         drivers.parallelStream().forEach(webDriver -> {
             webDriver.get("https://megamarket.ru");
             webDriver.manage().deleteAllCookies();
             webDriver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
             webDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
             TestCases testCases = new TestCases();
-            try {
-                testCases.changeAddress(webDriver);
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
+            testCases.changeAddress(webDriver);
         });
-        //drivers.forEach(WebDriver::quit);
+        drivers.forEach(WebDriver::quit);
     }
 
     @Test
@@ -72,7 +68,7 @@ public class MyTest {
             TestCases testCases = new TestCases();
             testCases.addItemInCert(webDriver);
         });
-        drivers.forEach(WebDriver::quit);
+        //drivers.forEach(WebDriver::quit);
     }
 
     @Test

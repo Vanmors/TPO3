@@ -6,41 +6,47 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class CatalogPage extends Page {
+    private String itemProduct =  "Apple Macbook Air";
+    private String searchProduct = "утюг";
+
+    private By inputLinePath = By.xpath("//input[@placeholder='Искать товары']");
+    private By buttonCookieElementPath = By.xpath("//button[@class='cookie__button c-button c-button_theme_primary c-button_size_small']");
+    private By firstMacbookPath = By.xpath("//div[@class=\"catalog-items-list\"]/div[1]/div/a");
+    private By buyButtonPath = By.xpath("//div[@class=\"catalog-buy-button catalog-buy-button_default catalog-buy-button_orientation-vertical catalog-buy-button_width-full\"]/button");
+    private By favouriteItemButtonPath = By.xpath("//div[@class=\"catalog-items-list\"]/div[1]/div[1]/div[1]/div[1]");
+    private By allFavouritesButtonPath = By.xpath("//a[@href=\"/personal/favorites/\"]");
 
     public CatalogPage(WebDriver driver) {
         super(driver);
     }
 
     public void searchProduct() {
-        WebElement input = driver.findElement(By.xpath("//input[@placeholder='Искать товары']"));
-        input.sendKeys("утюг");
+        WebElement input = driver.findElement(inputLinePath);
+        input.sendKeys(searchProduct);
+        input.sendKeys(Keys.ENTER);
+    }
+
+    private void clickOnMacBook(){
+        WebElement buttonCookie = driver.findElement(buttonCookieElementPath);
+        buttonCookie.click();
+        WebElement input = driver.findElement(inputLinePath);
+        input.sendKeys(itemProduct);
         input.sendKeys(Keys.ENTER);
     }
 
     public void addItemInCert() {
-        WebElement buttonCookie = driver.findElement(By.xpath("//button[@class='cookie__button c-button c-button_theme_primary c-button_size_small']"));
-        buttonCookie.click();
-        WebElement input = driver.findElement(By.xpath("//input[@placeholder='Искать товары']"));
-        input.sendKeys("Apple Macbook Air");
-        input.sendKeys(Keys.ENTER);
-        WebElement firstMacBook = driver.findElement(By.xpath("/html/body/div[1]/div[1]/main/div/div[1]/div[2]/div/div[2]/div[2]/div[2]/div[3]/div/div[1]/div[1]/a/div/img"));
+        clickOnMacBook();
+        WebElement firstMacBook = driver.findElement(firstMacbookPath);
         firstMacBook.click();
-
-        WebElement buyButton = driver.findElement(By.xpath("/html/body/div[1]/div[1]/main/div/div[1]/div[10]/div[2]/button"));
+        WebElement buyButton = driver.findElement(buyButtonPath);
         buyButton.click();
-        WebElement continueBuyHref = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div/div/div/div[1]/div/div/div[2]/a[1]/span"));
-        continueBuyHref.click();
     }
 
     public void favourites() {
-        WebElement buttonCookie = driver.findElement(By.xpath("//button[@class='cookie__button c-button c-button_theme_primary c-button_size_small']"));
-        buttonCookie.click();
-        WebElement input = driver.findElement(By.xpath("//input[@placeholder='Искать товары']"));
-        input.sendKeys("Apple Macbook Air");
-        input.sendKeys(Keys.ENTER);
-        WebElement favouriteItemButton = driver.findElement(By.xpath("/html/body/div[1]/div[1]/main/div/div[1]/div[2]/div/div[2]/div[2]/div[2]/div[3]/div/div[1]/div[1]/div/div[1]"));
+        clickOnMacBook();
+        WebElement favouriteItemButton = driver.findElement(favouriteItemButtonPath);
         favouriteItemButton.click();
-        WebElement favouritesButton = driver.findElement(By.xpath("/html/body/div[1]/div[1]/header/div[1]/div[1]/div/div/div/div/div[6]/div/a"));
+        WebElement favouritesButton = driver.findElement(allFavouritesButtonPath);
         favouritesButton.click();
     }
 

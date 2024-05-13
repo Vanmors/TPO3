@@ -24,7 +24,7 @@ public class CatalogPageTest {
             CatalogPage catalogPage = new CatalogPage(webDriver);
             catalogPage.searchProduct();
         });
-        drivers.forEach(WebDriver::quit);
+        //drivers.forEach(WebDriver::quit);
     }
 
     @Test
@@ -38,7 +38,7 @@ public class CatalogPageTest {
             CatalogPage catalogPage = new CatalogPage(webDriver);
             catalogPage.addItemInCert();
         });
-        drivers.forEach(WebDriver::quit);
+        //drivers.forEach(WebDriver::quit);
     }
 
     @Test
@@ -52,7 +52,7 @@ public class CatalogPageTest {
             CatalogPage catalogPage = new CatalogPage(webDriver);
             catalogPage.favourites();
         });
-        drivers.forEach(WebDriver::quit);
+        //drivers.forEach(WebDriver::quit);
     }
 
     @Test
@@ -66,7 +66,7 @@ public class CatalogPageTest {
             CatalogPage catalogPage = new CatalogPage(webDriver);
             catalogPage.filters();
         });
-        drivers.forEach(WebDriver::quit);
+        //drivers.forEach(WebDriver::quit);
     }
 
     @Test
@@ -80,6 +80,6 @@ public class CatalogPageTest {
             CatalogPage catalogPage = new CatalogPage(webDriver);
             catalogPage.compare();
         });
-        drivers.forEach(WebDriver::quit);
+        //drivers.forEach(WebDriver::quit);
     }
 }

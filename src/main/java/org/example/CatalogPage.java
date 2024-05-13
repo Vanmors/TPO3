@@ -16,6 +16,9 @@ public class CatalogPage extends Page {
     private By favouriteItemButtonPath = By.xpath("//div[@class=\"catalog-items-list\"]/div[1]/div[1]/div[1]/div[1]");
     private By allFavouritesButtonPath = By.xpath("//a[@href=\"/personal/favorites/\"]");
 
+    private By openFilterPath = By.xpath("//*[@class=\"floating-element__element\"]/div/button[2]");
+    private By filterOnPath = By.xpath("//*[@class=\"pui-toggle-control pui-toggle-control\"]");
+    private By submitPath = By.xpath("//*[@class=\"filter-footer\"]/button");
     public CatalogPage(WebDriver driver) {
         super(driver);
     }
@@ -52,11 +55,11 @@ public class CatalogPage extends Page {
 
     public void filters() {
         searchProduct();
-        WebElement openFilterButton = driver.findElement(By.xpath("//*[@id=\"app\"]/main/div/div[1]/div[3]/div/div[2]/div[2]/div[2]/div[1]/div/div/div/button[2]"));
+        WebElement openFilterButton = driver.findElement(openFilterPath);
         openFilterButton.click();
-        WebElement filterOnButton = driver.findElement(By.xpath("//*[@id=\"app\"]/main/div/div[1]/div[3]/div/div[2]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div[3]/div[7]/div/div/div/div/div[1]/div"));
+        WebElement filterOnButton = driver.findElement(filterOnPath);
         filterOnButton.click();
-        WebElement submitButton = driver.findElement(By.xpath("//*[@id=\"app\"]/main/div/div[1]/div[3]/div/div[2]/div[2]/div[1]/div/div/div[2]/div[3]/button"));
+        WebElement submitButton = driver.findElement(submitPath);
         submitButton.click();
     }
 

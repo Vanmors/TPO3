@@ -13,7 +13,8 @@ public class CertPage extends Page {
 
     public void deleteItemFromCert() {
         new CatalogPage(driver).addItemInCert();
-        WebElement deleteItemButton = driver.findElement(By.xpath("//*[@id=\"app\"]/main/div/div/div/div/div/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[2]/button"));
+//        WebElement deleteItemButton = driver.findElement(By.xpath("//*[@id=\"app\"]/main/div/div/div/div/div/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[2]/button"));
+        WebElement deleteItemButton = driver.findElement(By.xpath("//div[@class=\"good__end-block\"]/button"));
         deleteItemButton.click();
     }
 }

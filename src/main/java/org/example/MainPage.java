@@ -10,7 +10,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class MainPage extends Page{
+public class MainPage extends Page {
+    private static final String CITY = " Санкт-Петербург";
+    private static final String ADDRESS = "Санкт-Петербург, Кронверкский проспект, 49";
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -26,10 +28,10 @@ public class MainPage extends Page{
             button.click();
 
             WebElement input = driver.findElement(By.xpath("//input[@placeholder='Регион или город']"));
-            input.sendKeys(" Санкт-Петербург");
+            input.sendKeys(CITY);
             input.click();
             WebElement submitRegion = driver.findElement(By.xpath("//button[@class='header-region-selector-change__form-submit btn']"));
-            WebElement inputRegion = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div/div/div/div/div/div/div/form/div/div/div[2]/ul/li"));
+            WebElement inputRegion = driver.findElement(By.xpath("//div[@class=\"select field opened filterable lg\"]/div[2]/ul/li"));
             inputRegion.click();
             submitRegion.click();
         }
@@ -38,29 +40,29 @@ public class MainPage extends Page{
     public void addAddress() {
         if (driver instanceof ChromeDriver) {
             changeAddress();
-            WebElement buttonRegion = driver.findElement(By.xpath("//*[@id=\"page-header\"]/div[1]/div[2]/div/div/div/div[1]"));
+            WebElement buttonRegion = driver.findElement(By.xpath("//div[@class=\"mobile-header-delivery-address\"]/span"));
             buttonRegion.click();
             WebElement buttonAddress = driver.findElement(By.xpath("//button[@class='header-region-selector-view__address-block-button btn-bordered btn-block']"));
             buttonAddress.click();
-            WebElement addressInput = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div/div[2]/div[1]/div/div/form/div/input"));
-            addressInput.sendKeys("Санкт-Петербург, Кронверкский проспект, 49");
-            WebElement chooseAddress = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div/div[2]/div[1]/div/div/form/div[2]/ul/li/a"));
+            WebElement addressInput = driver.findElement(By.xpath("//div[@class=\"cnc-base-search\"]/form/div/input"));
+            addressInput.sendKeys(ADDRESS);
+            WebElement chooseAddress = driver.findElement(By.xpath("//div[@class=\"search-form-suggestions-container\"]/ul/li/a"));
             chooseAddress.click();
-            WebElement buttonSubmitAddress = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div/div[2]/div[3]/button"));
+            WebElement buttonSubmitAddress = driver.findElement(By.xpath("//div[@class=\"profile-address-create__footer\"]/button"));
             buttonSubmitAddress.click();
         } else {
             WebElement button = driver.findElement(By.xpath("/html/body/div[1]/div[1]/header/div[1]/div[2]/div/div/div/div[1]"));
             button.click();
-            WebElement enterAddress = driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[1]/div/div/div/div/div/div/div/div[3]/button"));
+            WebElement enterAddress = driver.findElement(By.xpath("//*[@class=\"header-region-selector-view__address-block\"]/button"));
             enterAddress.click();
 
-            WebElement addressInput = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div/div[2]/div[1]/div/div/form/div/input"));
-            addressInput.sendKeys("Санкт-Петербург, Кронверкский проспект, 49");
-            WebElement chooseAddress = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div/div[2]/div[1]/div/div/form/div[2]/ul/li/a"));
+            WebElement addressInput = driver.findElement(By.xpath("//div[@class=\"search-field\"]/input"));
+            addressInput.sendKeys(ADDRESS);
+            WebElement chooseAddress = driver.findElement(By.xpath("//div[@class=\"search-form-suggestions-container\"]/ul/li/a"));
             chooseAddress.click();
-            WebElement buttonSubmitAddress = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div/div[2]/div[3]/button"));
+            WebElement buttonSubmitAddress = driver.findElement(By.xpath("//div[@class=\"profile-address-create__footer\"]/button"));
             buttonSubmitAddress.click();
-            WebElement buttonClose = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div/button"));
+            WebElement buttonClose = driver.findElement(By.xpath("//*[@class=\"app-layout-default\"]/div[1]/div/div/button"));
             buttonClose.click();
         }
     }

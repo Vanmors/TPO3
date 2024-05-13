@@ -14,8 +14,8 @@ public class CertPageTest {
     }
 
     @Test
-    void changeAddressTest() {
-        List<WebDriver> drivers = Main.getDrivers("both");
+    void deleteItemFromCertTest() {
+        List<WebDriver> drivers = Main.getDrivers("chrome");
         drivers.parallelStream().forEach(webDriver -> {
             webDriver.get("https://megamarket.ru");
             webDriver.manage().deleteAllCookies();

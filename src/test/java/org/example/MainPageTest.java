@@ -15,7 +15,7 @@ public class MainPageTest {
 
     @Test
     void changeAddressTest() {
-        List<WebDriver> drivers = Main.getDrivers("both");
+        List<WebDriver> drivers = Main.getDrivers("chrome");
         drivers.parallelStream().forEach(webDriver -> {
             webDriver.get("https://megamarket.ru");
             webDriver.manage().deleteAllCookies();
@@ -29,7 +29,7 @@ public class MainPageTest {
 
     @Test
     void addAddressTest() {
-        List<WebDriver> drivers = Main.getDrivers("both");
+        List<WebDriver> drivers = Main.getDrivers("chrome");
         drivers.parallelStream().forEach(webDriver -> {
             webDriver.get("https://megamarket.ru");
             webDriver.manage().deleteAllCookies();

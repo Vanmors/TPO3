@@ -11,8 +11,8 @@ import java.util.concurrent.TimeUnit;
 public class Main {
     private final static String PATH_FIREFOX_WEBDRIVER = "drivers/geckodriver.exe";
     private final static String FIREFOX_WEBDRIVER_NAME = "webdriver.gecko.driver";
-//        private static final String PATH_OF_GOOGLE_DRIVER = "drivers/chromedriver-mac-arm64/chromedriver";
-    private static final String PATH_OF_GOOGLE_DRIVER = "drivers/chromedriver.exe";
+        private static final String PATH_OF_GOOGLE_DRIVER = "drivers/chromedriver-mac-arm64/chromedriver";
+//    private static final String PATH_OF_GOOGLE_DRIVER = "drivers/chromedriver.exe";
     private final static String GOOGLE_WEBDRIVER_NAME = "webdriver.chrome.driver";
 
     public static void main(String[] args) {

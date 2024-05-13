@@ -7,15 +7,13 @@ import org.openqa.selenium.WebDriver;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class MyTest {
-
+public class CatalogPageTest {
     @BeforeAll
     public static void prepareDrivers() {
         Main.prepareDrivers();
     }
 
     @Test
-    //okay
     void searchProductTest() {
         List<WebDriver> drivers = Main.getDrivers("both");
         drivers.parallelStream().forEach(webDriver -> {
@@ -23,36 +21,8 @@ public class MyTest {
             webDriver.manage().deleteAllCookies();
             webDriver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
             webDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-            TestCases testCases = new TestCases();
-            testCases.searchProduct(webDriver);
-        });
-        drivers.forEach(WebDriver::quit);
-    }
-
-    @Test
-    void changeAddressTest() {
-        List<WebDriver> drivers = Main.getDrivers("both");
-        drivers.parallelStream().forEach(webDriver -> {
-            webDriver.get("https://megamarket.ru");
-            webDriver.manage().deleteAllCookies();
-            webDriver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
-            webDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-            TestCases testCases = new TestCases();
-            testCases.changeAddress(webDriver);
-        });
-        drivers.forEach(WebDriver::quit);
-    }
-
-    @Test
-    void addAddressTest() {
-        List<WebDriver> drivers = Main.getDrivers("both");
-        drivers.parallelStream().forEach(webDriver -> {
-            webDriver.get("https://megamarket.ru");
-            webDriver.manage().deleteAllCookies();
-            webDriver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
-            webDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-            TestCases testCases = new TestCases();
-            testCases.addAddress(webDriver);
+            CatalogPage catalogPage = new CatalogPage(webDriver);
+            catalogPage.searchProduct();
         });
         drivers.forEach(WebDriver::quit);
     }
@@ -65,36 +35,50 @@ public class MyTest {
             webDriver.manage().deleteAllCookies();
             webDriver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
             webDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-            TestCases testCases = new TestCases();
-            testCases.addItemInCert(webDriver);
-        });
-        //drivers.forEach(WebDriver::quit);
-    }
-
-    @Test
-    void deleteItemFromCertTest() {
-        List<WebDriver> drivers = Main.getDrivers("both");
-        drivers.parallelStream().forEach(webDriver -> {
-            webDriver.get("https://megamarket.ru");
-            webDriver.manage().deleteAllCookies();
-            webDriver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
-            webDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-            TestCases testCases = new TestCases();
-            testCases.deleteItemFromCert(webDriver);
+            CatalogPage catalogPage = new CatalogPage(webDriver);
+            catalogPage.addItemInCert();
         });
         drivers.forEach(WebDriver::quit);
     }
 
     @Test
-    void favouritesTest() {
+    void addToFavoritesTest() {
         List<WebDriver> drivers = Main.getDrivers("both");
         drivers.parallelStream().forEach(webDriver -> {
             webDriver.get("https://megamarket.ru");
             webDriver.manage().deleteAllCookies();
             webDriver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
             webDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-            TestCases testCases = new TestCases();
-            testCases.favourites(webDriver);
+            CatalogPage catalogPage = new CatalogPage(webDriver);
+            catalogPage.favourites();
+        });
+        drivers.forEach(WebDriver::quit);
+    }
+
+    @Test
+    void checkFiltersTest() {
+        List<WebDriver> drivers = Main.getDrivers("both");
+        drivers.parallelStream().forEach(webDriver -> {
+            webDriver.get("https://megamarket.ru");
+            webDriver.manage().deleteAllCookies();
+            webDriver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+            webDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            CatalogPage catalogPage = new CatalogPage(webDriver);
+            catalogPage.filters();
+        });
+        drivers.forEach(WebDriver::quit);
+    }
+
+    @Test
+    void compareTest() {
+        List<WebDriver> drivers = Main.getDrivers("both");
+        drivers.parallelStream().forEach(webDriver -> {
+            webDriver.get("https://megamarket.ru");
+            webDriver.manage().deleteAllCookies();
+            webDriver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+            webDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            CatalogPage catalogPage = new CatalogPage(webDriver);
+            catalogPage.compare();
         });
         drivers.forEach(WebDriver::quit);
     }

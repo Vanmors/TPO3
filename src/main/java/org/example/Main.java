@@ -25,9 +25,9 @@ public class Main {
         driver.manage().deleteAllCookies();
         driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        TestCases testCases = new TestCases();
+        //TestCases testCases = new TestCases();
         //testCases.searchProduct(driver);
-        testCases.changeAddress(driver);
+        //testCases.changeAddress(driver);
         //testCases.addAddress(driver);
         //testCases.addItemInCert(driver);
         //testCases.deleteItemFromCert(driver);
